@@ -15,15 +15,15 @@ int minBaseServoValue = 20;
 
 // ARM 1 SERVO CONFIGURATION
 int arm1ServoPin = 6;
-int maxArm1ServoValue = 120;
-int minArm1ServoValue = 20;
+int minArm1ServoValue = 530;
+int maxArm1ServoValue = 2400;
 
 // ARM 2 SERVO CONFIGURATION
 int arm2ServoPin = 9;
-int maxArm2ServoValue = 120;
-int minArm2ServoValue = 20;
+int minArm2ServoValue = 530;
+int maxArm2ServoValue = 2400;
 
 // ARM 3 SERVO CONFIGURATION
 int arm3ServoPin = 10;
-int maxArm3ServoValue = 120;
-int minArm3ServoValue = 20;
+int minArm3ServoValue = 530;
+int maxArm3ServoValue = 2400;

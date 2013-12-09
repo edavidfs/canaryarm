@@ -1,18 +1,25 @@
 
 char command[7];
 
+int motor;
+int angle;
+char movement;
+
+
 void receiveCommand(){
+  command[7] = '0_0_000';
   int i=0;
   Serial.print("\n");
   Serial.println("command?");
 
-  while (Serial.available() == 0) {}
+  while (Serial.available() == 0);
 
   while (Serial.available() > 0) {
     command[i] = Serial.read();
     i++;
-    delay(15);
+    delay(30);
   }
+  Serial.flush();
 }
 
 
