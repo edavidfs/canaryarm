@@ -9,12 +9,7 @@ int openGripperValue = 120;
 int closeGripperValue = 20;
 
 // BASE SERVO CONFIGURATION
-int baseServoPin = 5;
-int maxBaseServoValue = 120;
-int minBaseServoValue = 20;
-
-// ARM 1 SERVO CONFIGURATION
-int arm1ServoPin = 6;
+int arm1ServoPin = 3;
 int minArm1ServoValue = 530;
 int maxArm1ServoValue = 2400;
 
@@ -27,3 +22,18 @@ int maxArm2ServoValue = 2400;
 int arm3ServoPin = 10;
 int minArm3ServoValue = 530;
 int maxArm3ServoValue = 2400;
+
+// ARM 4 SERVO CONFIGURATION
+int arm4ServoPin = 11;
+int minArm4ServoValue = 530;
+int maxArm4ServoValue = 2400;
+
+// MOVEMENT PARAMETERS
+
+double vMax = 600.0;
+double vMin = 10;
+double acceleration = 1000.0;
+double accMax = 3000;
+double accelerationPercentaje = 0.3;
+
+

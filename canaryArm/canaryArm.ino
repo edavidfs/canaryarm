@@ -2,23 +2,19 @@
 
 void setup()
 {
-  servoSetup();
   Serial.begin(9600); 
+  Serial.println("Servo Configuration"); 
+  servoSetup();
   Serial.println("Canary Arm Ready"); 
-  
 }
 
 void loop(){
   
-  receiveCommand();
-  
-  Serial.print ("Motor Received:");
-  Serial.println (motorCommand());
-  
-  Serial.print ("Angle Received:");
-  Serial.println (motorAngle());
-  
-  moveMotorToAngle(motorCommand(),movementType(), motorAngle());
+  if (receiveCommand() == true){
+    processCommand();
+  }else{
+    Serial.print("Comando Recibido erroneo");
+  }
    
 }
 
