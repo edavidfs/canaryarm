@@ -73,10 +73,8 @@ void moveMotorToAngle(Servo selectedServo,char movementType,  float angleObjecti
    Serial.print("Porcentaje al Objetivo: ");
    Serial.println(porcentajeAlObjetivo);
 
-   Serial.println("");
    Serial.println("Acelerando");
-   Serial.println(""); 
-   unsigned long iteracion = 0 ;  
+   
    angleInitial = angleActual;
    vInitial = 0;
    initialTime = double(millis())/1000;
@@ -122,18 +120,13 @@ void moveMotorToAngle(Servo selectedServo,char movementType,  float angleObjecti
 //     Serial.print("Porcentaje al Objetivo: ");
 //     Serial.println(porcentajeAlObjetivo);    
     
-    iteracion++; 
    }
-   Serial.print("Iteraciones en aceleracion: ");
-   Serial.println(iteracion);     
    
    Serial.print("Velocidad Actual: ");
    Serial.println(vActual,4);   
-   Serial.println("");
-   Serial.println("Velocidad Crucero");
-   Serial.println("");   
 
-    iteracion = 0;
+   Serial.println("Velocidad Crucero");
+
    angleInitial = angleActual;
    initialTime = double(millis())/1000;
    while (porcentajeAlObjetivo >= accelerationPercentaje && porcentajeAlObjetivo<(1-accelerationPercentaje)){
@@ -157,31 +150,20 @@ void moveMotorToAngle(Servo selectedServo,char movementType,  float angleObjecti
      porcentajeAlObjetivo = (distanciaTotal-distanciaAlObjetivo) / distanciaTotal;
      
      //Serial.print("Porcentaje al Objetivo: ");
-     //Serial.println(porcentajeAlObjetivo);  
-     iteracion++; 
+     //Serial.println(porcentajeAlObjetivo);   
    }
    
-   Serial.println("");
    Serial.println("Frenando");
-   Serial.println(""); 
 
    initialTime = double(millis())/1000;
    angleInitial = angleActual;
    vInitial = vActual;
-   iteracion = 0;
    while (porcentajeAlObjetivo>=accelerationPercentaje && porcentajeAlObjetivo<1.0){
-     //Serial.println("Frenando");
-     //Serial.println();
      
      actualTime = (double(millis())/1000)-initialTime;
      angleLast = angleActual;   
-//     Serial.print("Tiempo Actual: ");
-//     Serial.println(actualTime);
       
-      //vActual = sqrt(vInitial*vInitial - 2*acceleration*actualTime);
      vActual = vInitial-acceleration*actualTime;
-//     Serial.print("Velocidad Actual: ");
-//     Serial.println(vActual,4);
      if (vActual< vMin){
        vActual = vMin;
        angleActual  =  angleObjective;
@@ -190,18 +172,6 @@ void moveMotorToAngle(Servo selectedServo,char movementType,  float angleObjecti
         angleActual  = angleInitial+ sense*(vInitial*actualTime - (acceleration*actualTime*actualTime)/2);
      }
      
-//     Serial.print("Angulo Inicial: ");
-//     Serial.println(angleInitial,4);
-//     
-//     Serial.print("Velocidad Inicial: ");
-//     Serial.println(vInitial,4);
-//      
-//     Serial.print("Angulo Actual: ");
-//     Serial.println(angleActual,4);
-//
-//     Serial.print("Velocidad Actual 2: ");
-//     Serial.println(vActual,4);
-
      selectedServo.write(angleActual);
 //     Serial.print("Moviendose a: ");
 //     Serial.println(angleActual,5); 
@@ -217,8 +187,6 @@ void moveMotorToAngle(Servo selectedServo,char movementType,  float angleObjecti
      porcentajeAlObjetivo = (distanciaTotal-distanciaAlObjetivo) / distanciaTotal;
 //     Serial.print("Porcentaje al Objetivo: ");
 //     Serial.println(porcentajeAlObjetivo,4);  
-     iteracion ++;
-
    }
 }
 
